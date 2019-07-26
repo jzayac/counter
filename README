@@ -1,0 +1,10 @@
+build test docker image:
+> make build-test
+
+to run this image:
+> make run-test-image
+
+application should listen on port 8080
+
+run some benchmark with command:
+> make benchmark

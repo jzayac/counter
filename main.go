@@ -43,6 +43,7 @@ func timer() {
 func main() {
 	// initialize: read and parse file into []int
 	file = fs.NewFileService("cache.txt")
+
 	t, err := file.Read()
 	if err != nil || len(t) < 60 {
 		// default []int
@@ -50,11 +51,11 @@ func main() {
 		t = c[:]
 	}
 
-	// create counter with previous state
+	// init request counter with previous state
 	ctr = counter.NewCounter(t)
 
+	// init simple endpoints
 	http.HandleFunc("/", handlerIncrement)
-
 	http.HandleFunc("/count", getCounter)
 
 	// start time tick

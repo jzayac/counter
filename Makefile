@@ -12,13 +12,9 @@ run-test-image:
 	@echo ":::run test image"
 	docker run -d --rm --name $(CONTAINER_NAME) -p $(PORT):$(PORT) $(IMAGE_NAME):$(BASE_TAG)
 
-run-flame-graph:
-	@echo ":::run flame graph"
-	docker run uber/go-torch --link $(CONTAINER_NAME):$(CONTAINER_NAME) -u http://$(CONTAINER_NAME):$(PORT) -p > torch.svg
-
 test-request:
 	@echo ":::test single request"
-	curl localhost:8080 
+	curl localhost:8080
 
 benchmark:
 	@echo ":::bechmark and test data race"
