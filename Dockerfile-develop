@@ -1,0 +1,11 @@
+FROM golang:1.12.7
+
+RUN go get github.com/tsliwowicz/go-wrk 
+
+COPY ./ /go/src/counter/
+WORKDIR /go/src/counter
+
+EXPOSE 8080
+
+CMD ["go", "run", "-race", "main.go"]
+
