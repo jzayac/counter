@@ -20,3 +20,7 @@ benchmark:
 	@echo ":::bechmark and test data race"
 	docker run -it --rm --link $(CONTAINER_NAME) $(IMAGE_NAME):$(BASE_TAG) go-wrk -d 5 http://$(CONTAINER_NAME):8080
 
+unit-test:
+	@echo ":::unit test"
+	go test -v ./...
+
